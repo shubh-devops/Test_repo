@@ -18,7 +18,7 @@ jobs:
     steps:
       # Step 1: Check out the code
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Step 2: Set up Python environment
       - name: Set up Python
@@ -28,13 +28,13 @@ jobs:
 
       # Step 3: Run Code 1
       - name: Run Python Script 1
-        if: ${{ inputs.option == 'Run Code 1 Only' || inputs.option == 'Run Code 1 and Code 2' }}
+        if: ${{ inputs.option == 'Run App1 Only' || inputs.option == 'Run App1 and App2' }}
         run: |
           python Python_Code-app1.py
 
       # Step 4: Run Code 2
       - name: Run Python Script 2
-        if: ${{ inputs.option == 'Run Code 1 and Code 2' }}
+        if: ${{ inputs.option == 'Run App1 and App2' }}
         run: |
           python Python_Code-app2.py
 
