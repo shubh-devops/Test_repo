@@ -8,8 +8,8 @@ on:
         required: true
         type: choice
         options:
-          - Option 1: Run App
-          - Option 2: Install Dependencies Only
+          - Run App
+          - Install Dependencies Only
 
 jobs:
   run-python-app:
