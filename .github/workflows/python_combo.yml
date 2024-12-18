@@ -1,0 +1,40 @@
+name: Run Python Apps with Options
+
+on:
+  workflow_dispatch:
+    inputs:
+      option:
+        description: "Choose an option to run"
+        required: true
+        type: choice
+        options:
+          - Run Code 1 Only
+          - Run Code 1 and Code 2
+
+jobs:
+  run-python-scripts:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      # Step 3: Run Code 1
+      - name: Run Python Script 1
+        if: ${{ inputs.option == 'Run Code 1 Only' || inputs.option == 'Run Code 1 and Code 2' }}
+        run: |
+          python app1.py
+
+      # Step 4: Run Code 2
+      - name: Run Python Script 2
+        if: ${{ inputs.option == 'Run Code 1 and Code 2' }}
+        run: |
+          python app2.py
+
