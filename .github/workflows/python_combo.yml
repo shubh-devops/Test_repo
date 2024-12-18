@@ -8,8 +8,8 @@ on:
         required: true
         type: choice
         options:
-          - Run Code 1 Only
-          - Run Code 1 and Code 2
+          - Run App1 Only
+          - Run App1 and App2
 
 jobs:
   run-python-scripts:
@@ -30,11 +30,11 @@ jobs:
       - name: Run Python Script 1
         if: ${{ inputs.option == 'Run Code 1 Only' || inputs.option == 'Run Code 1 and Code 2' }}
         run: |
-          python app1.py
+          python Python_Code-app1.py
 
       # Step 4: Run Code 2
       - name: Run Python Script 2
         if: ${{ inputs.option == 'Run Code 1 and Code 2' }}
         run: |
-          python app2.py
+          python Python_Code-app2.py
 
